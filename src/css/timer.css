@@ -1,0 +1,33 @@
+.input {
+    width: 100%;
+    padding: 32px 0px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.timer {
+    min-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+}
+
+.value {
+    text-align: center;
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+.label {
+    text-transform: uppercase;
+    font-size: 0.725rem;
+    text-align: center;
+}
