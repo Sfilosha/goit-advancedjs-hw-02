@@ -22,7 +22,6 @@ formEl.addEventListener("submit", event => {
     const setDelay = formData.get("delay");
 
     const createPromise = new Promise((resolve, reject) => {
-        console.log(selectedType)
     setTimeout(() => {
     if (selectedType === 'fulfilled') {
       resolve(iziToast.show({
@@ -36,8 +35,8 @@ formEl.addEventListener("submit", event => {
     }, Number(setDelay));    
 })
     createPromise
-    .then(result => {}) // Обробка результату
-        .catch(error => { }); // Обробка помилки
+    .then(result => {console.log(selectedType)}) // Обробка результату
+        .catch(error => {console.log(selectedType)}); // Обробка помилки
 })
 
 
