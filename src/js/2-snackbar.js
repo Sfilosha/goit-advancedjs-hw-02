@@ -14,39 +14,30 @@ iziToast.settings({
 
 const formEl = document.querySelector('form');
 
-const formData = {
-    delay: null,
-    state: null,
-};
-
-const onFormFieldInput = event => {
-    const { target: formEl } = event;
-    const fieldName = formEl.name;
-    const fieldValue = formEl.value;
-
-    formData[fieldName] = fieldValue;
-}
-
-
-formEl.addEventListener("input", onFormFieldInput);
-
-
 formEl.addEventListener("submit", event => {
     event.preventDefault();
+
+    const formData = new FormData(formEl);
+    const selectedType = formData.get("state");
+    const setDelay = formData.get("delay");
+
     const createPromise = new Promise((resolve, reject) => {
-        console.log(formData.state)
+        console.log(selectedType)
     setTimeout(() => {
-    if (formData.state === 'fulfilled') {
+    if (selectedType === 'fulfilled') {
       resolve(iziToast.show({
-                message: `✅ Fulfilled promise in ${formData.delay}ms`,
+                message: `✅ Fulfilled promise in ${setDelay}ms`,
             }));
     } else {
         reject(iziToast.show({
-                message: `❌ Rejected promise in ${formData.delay}ms`,
+                message: `❌ Rejected promise in ${setDelay}ms`,
             }));
     }
-  }, formData.delay);
+    }, Number(setDelay));    
 })
+    createPromise
+    .then(result => {}) // Обробка результату
+        .catch(error => { }); // Обробка помилки
 })
 
 

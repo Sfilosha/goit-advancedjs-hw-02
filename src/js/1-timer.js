@@ -50,6 +50,8 @@ const timer = {
             this.elements.minutes.textContent = this.addLeadingZero(minutes);
             this.elements.seconds.textContent = this.addLeadingZero(seconds);
 
+            btnStart.setAttribute('disabled', '');
+            btnStart.previousElementSibling.setAttribute('disabled', '');
             
         }, 1000);
 
@@ -57,6 +59,7 @@ const timer = {
 
     stop() {
         clearInterval(this.intervalId);
+        btnStart.previousElementSibling.removeAttribute('disabled');
     },
 
     addLeadingZero(value) {
@@ -95,7 +98,7 @@ flatpickr("#datetime-picker", options);
 const btnStart = document.querySelector('button[data-start]')
 btnStart.addEventListener("click", event => timer.start());
 
-
+console.dir(btnStart)
 
 
 // console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
